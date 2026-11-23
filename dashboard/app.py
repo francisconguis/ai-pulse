@@ -22,7 +22,7 @@ from ai_pulse.pipeline import PulsePipeline  # noqa: E402
 from ai_pulse.storage import StorageRepository  # noqa: E402
 
 st.set_page_config(
-    page_title="AI Pulse: Automated AI Intelligence",
+    page_title="AI Pulse",
     page_icon="⚡",
     layout="wide",
 )
