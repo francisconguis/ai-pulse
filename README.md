@@ -4,6 +4,7 @@
 [![Pydantic v2](https://img.shields.io/badge/pydantic-v2-E92063.svg)](https://docs.pydantic.dev/)
 [![Streamlit](https://img.shields.io/badge/dashboard-Streamlit-FF4B4B.svg)](https://streamlit.io/)
 [![Tests](https://img.shields.io/badge/tests-pytest-0A9EDC.svg)](https://docs.pytest.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 **AI Pulse** is an automated Python web scraping and AI intelligence pipeline that monitors **ArXiv** (`cs.AI`, `cs.LG`, `cs.CL`), **Hacker News**, and **GitHub Trending**, enriches new items into structured Pydantic schemas via LLM APIs (with a zero-key heuristic fallback), deduplicates records in **SQLite**, and surfaces insights through a **Rich CLI**, **APScheduler automation**, and an interactive **Streamlit dashboard**.
 
@@ -48,9 +49,14 @@ flowchart LR
 
 ---
 
-## Quickstart
+## Quickstart & Installation
 
-### 1. Clone & Install
+### Option A: One-Click Launch (Windows)
+1. Clone or download this repository.
+2. Double-click **`launch_dashboard.bat`** in File Explorer.
+3. On the first run, it automatically installs dependencies and opens the **AI Pulse Dashboard** in your browser (`http://localhost:8501`).
+
+### Option B: Manual Setup (Windows / macOS / Linux)
 
 ```bash
 git clone https://github.com/francisconguis/ai-pulse.git
@@ -70,40 +76,90 @@ Activate the virtual environment:
 source .venv/bin/activate
 ```
 
-Install dependencies:
+Install the package and dev dependencies:
 
 ```bash
 pip install -e ".[dev]"
 ```
 
-### 2. Optional: Configure an LLM API Key
+---
 
-Copy `.env.example` to `.env` and add either `GEMINI_API_KEY` or `OPENAI_API_KEY`:
+## User Guide: How to Use AI Pulse
+
+### 1. Using the Interactive Web Dashboard (Recommended)
+
+Launch the dashboard by double-clicking **`launch_dashboard.bat`** (Windows) or running:
 
 ```bash
-cp .env.example .env
+ai-pulse dashboard
+# or: python -m streamlit run dashboard/app.py
 ```
 
-> **Works out of the box:** If no API key is set, AI Pulse automatically runs in `heuristic` enrichment mode so anyone can test and demo it immediately.
+Once `http://localhost:8501` opens in your browser:
+1. **Scrape Live Data:** In the left sidebar under **🔄 Live Scraper**, pick your sources (`arxiv`, `hackernews`, `github_trending`), set **Max items per source**, and click **🚀 Run Scrape Now**.
+2. **Browse & Filter:** Open the **📰 Intelligence Feed** tab to read summaries, key takeaways, relevance scores, and tags. Use the sidebar to filter by **Source**, **Category**, **Min relevance score**, or **Search keywords** (e.g., `agents`, `rag`, `pytorch`).
+3. **Explore Trends:** Open the **📊 Analytics** tab to view item counts by category, source breakdown, and top extracted tags.
+4. **Download Reports:** Open the **📝 Daily Digest & Export** tab to preview the formatted Markdown intelligence digest and download `.md` or `.json` files with one click.
 
-### 3. Run the Pipeline or Dashboard
+---
+
+### 2. Using the Command-Line Interface (CLI)
+
+You can also run everything directly from your terminal:
 
 ```bash
-# Launch the interactive Streamlit dashboard
-ai-pulse dashboard
-
-# Or run from the CLI
+# Scrape up to 10 items from each source, enrich them, and save to SQLite
 ai-pulse scrape --limit 10
-ai-pulse list --limit 10
-ai-pulse stats
-ai-pulse digest
-ai-pulse export --format csv
 
-# Run continuously on a schedule (every 180 minutes)
+# Scrape only specific sources
+ai-pulse scrape --source arxiv --source github_trending --limit 10
+
+# View collected items in a formatted terminal table
+ai-pulse list --limit 10
+
+# Filter or search stored items
+ai-pulse list --source arxiv --search "agent"
+
+# View database statistics
+ai-pulse stats
+
+# Generate a Markdown digest (saved to exports/latest_digest.md)
+ai-pulse digest
+
+# Export stored items to JSON or CSV (saved in exports/)
+ai-pulse export --format json
+ai-pulse export --format csv
+```
+
+---
+
+### 3. Running in Automated Scheduled Mode
+
+To automatically scrape, deduplicate, enrich, and regenerate `exports/latest_digest.md` on a recurring schedule:
+
+```bash
+# Runs immediately, then repeats every 180 minutes (press Ctrl+C to stop)
 ai-pulse schedule --interval 180
 ```
 
-### 4. Run Tests
+---
+
+### 4. Optional: Enabling LLM Enrichment (Gemini or OpenAI)
+
+By default, AI Pulse runs with **zero API keys required** using its built-in `heuristic` enricher. To enable LLM-powered structured summaries and categorization:
+
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Add either `GEMINI_API_KEY` or `OPENAI_API_KEY` inside `.env`.
+3. Run a scrape from the dashboard or CLI — AI Pulse will automatically switch from `heuristic` to `gemini` or `openai` (and gracefully fall back to `heuristic` if an API request ever fails).
+
+---
+
+## Running Tests
+
+Run the offline unit test suite (no internet connection or API keys required):
 
 ```bash
 pytest -v
@@ -131,6 +187,8 @@ ai-pulse/
 │   ├── scheduler.py              # APScheduler recurring automation
 │   └── storage.py                # SQLite repository & JSON/CSV/Markdown exports
 ├── tests/                        # Offline pytest unit tests
+├── launch_dashboard.bat          # One-click Windows launcher for the dashboard
+├── LICENSE                       # MIT License
 ├── pyproject.toml
 ├── requirements.txt
 └── .env.example
@@ -140,4 +198,4 @@ ai-pulse/
 
 ## License
 
-MIT
+This project is licensed under the [MIT License](LICENSE).
