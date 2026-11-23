@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-pulse"
+version = "0.1.0"
+description = "Automated AI/Tech web scraping, LLM enrichment, and intelligence dashboard."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx>=0.27.0",
+    "beautifulsoup4>=4.12.0",
+    "pydantic>=2.7.0",
+    "python-dotenv>=1.0.0",
+    "rich>=13.7.0",
+    "typer>=0.12.0",
+    "apscheduler>=3.10.4",
+    "streamlit>=1.35.0",
+    "pandas>=2.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.5.0",
+]
+
+[project.scripts]
+ai-pulse = "ai_pulse.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
