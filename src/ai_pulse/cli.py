@@ -22,7 +22,7 @@ from ai_pulse.storage import StorageRepository
 
 app = typer.Typer(
     name="ai-pulse",
-    help="AI Pulse — Automated AI/Tech web scraper, LLM enricher, and intelligence dashboard.",
+    help="AI Pulse: Automated AI/Tech web scraper, LLM enricher, and intelligence dashboard.",
     no_args_is_help=True,
 )
 console = Console()

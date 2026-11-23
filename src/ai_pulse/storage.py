@@ -263,7 +263,7 @@ class StorageRepository:
         items = self.query_items(limit=limit)
         generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
         lines = [
-            "# AI Pulse — Automated Intelligence Digest",
+            "# AI Pulse: Automated Intelligence Digest",
             f"_Generated: {generated_at} | Items: {len(items)}_",
             "",
         ]

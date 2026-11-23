@@ -22,7 +22,7 @@ from ai_pulse.pipeline import PulsePipeline  # noqa: E402
 from ai_pulse.storage import StorageRepository  # noqa: E402
 
 st.set_page_config(
-    page_title="AI Pulse — Automated AI Intelligence",
+    page_title="AI Pulse: Automated AI Intelligence",
     page_icon="⚡",
     layout="wide",
 )
@@ -30,7 +30,7 @@ st.set_page_config(
 settings = Settings.from_env()
 repo = StorageRepository(settings.db_path)
 
-st.title("⚡ AI Pulse — Automated AI/Tech Intelligence")
+st.title("⚡ AI Pulse: Automated AI/Tech Intelligence")
 st.caption(
     "Async multi-source scraper (ArXiv, Hacker News, GitHub Trending) + "
     "Pydantic-validated AI enrichment + SQLite deduplication"

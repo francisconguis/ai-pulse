@@ -155,7 +155,7 @@ By default, AI Pulse runs with **zero API keys required** using its built-in `he
    cp .env.example .env
    ```
 2. Add either `GEMINI_API_KEY` or `OPENAI_API_KEY` inside `.env`.
-3. Run a scrape from the dashboard or CLI — AI Pulse will automatically switch from `heuristic` to `gemini` or `openai` (and gracefully fall back to `heuristic` if an API request ever fails).
+3. Run a scrape from the dashboard or CLI, and AI Pulse will automatically switch from `heuristic` to `gemini` or `openai` (and gracefully fall back to `heuristic` if an API request ever fails).
 
 ---
 
