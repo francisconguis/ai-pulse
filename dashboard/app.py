@@ -30,11 +30,8 @@ st.set_page_config(
 settings = Settings.from_env()
 repo = StorageRepository(settings.db_path)
 
-st.title("⚡ AI Pulse: Automated AI/Tech Intelligence")
-st.caption(
-    "Async multi-source scraper (ArXiv, Hacker News, GitHub Trending) + "
-    "Pydantic-validated AI enrichment + SQLite deduplication"
-)
+st.title("⚡ AI Pulse")
+st.caption("Automated AI & Tech Research Tracker · ArXiv, Hacker News & GitHub Trending")
 
 # --- Sidebar: Live Scraper & Filters ---
 with st.sidebar:
