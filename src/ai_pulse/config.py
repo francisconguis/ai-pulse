@@ -24,7 +24,7 @@ class Settings:
     max_items_per_source: int
     request_timeout: float
     schedule_minutes: int
-    user_agent: str = "AIPulseBot/0.1 (+https://github.com/ai-pulse; educational portfolio project)"
+    user_agent: str = "AIPulseBot/0.1 (+https://github.com/francisconguis/ai-pulse)"
 
     @classmethod
     def from_env(cls) -> Settings:

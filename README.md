@@ -53,7 +53,7 @@ flowchart LR
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/<your-username>/ai-pulse.git
+git clone https://github.com/francisconguis/ai-pulse.git
 cd ai-pulse
 python -m venv .venv
 ```
