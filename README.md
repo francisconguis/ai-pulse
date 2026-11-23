@@ -1,12 +1,14 @@
 # ⚡ AI Pulse
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B.svg)](https://francisconguis-ai-pulse-dashboardapp-vwtjtz.streamlit.app/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![Pydantic v2](https://img.shields.io/badge/pydantic-v2-E92063.svg)](https://docs.pydantic.dev/)
-[![Streamlit](https://img.shields.io/badge/dashboard-Streamlit-FF4B4B.svg)](https://streamlit.io/)
 [![Tests](https://img.shields.io/badge/tests-pytest-0A9EDC.svg)](https://docs.pytest.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 **AI Pulse** is an automated Python web scraping and AI intelligence pipeline that monitors **ArXiv** (`cs.AI`, `cs.LG`, `cs.CL`), **Hacker News**, and **GitHub Trending**, enriches new items into structured Pydantic schemas via LLM APIs (with a zero-key heuristic fallback), deduplicates records in **SQLite**, and surfaces insights through a **Rich CLI**, **APScheduler automation**, and an interactive **Streamlit dashboard**.
+
+> **🚀 Live Dashboard:** [Try AI Pulse on Streamlit Cloud](https://francisconguis-ai-pulse-dashboardapp-vwtjtz.streamlit.app/) *(Click **Run Scrape Now** in the sidebar to pull live AI papers, HN stories, and trending GitHub repos!)*
 
 ---
 
